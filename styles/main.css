@@ -1,0 +1,221 @@
+:root {
+    --clock-size: 86%;
+    --clock-padding: calc((100% - var(--clock-size))/2);
+}
+
+html {
+    font-size: 5vmin;
+    height: 100%;
+}
+
+body {
+    font-family: Helvetica, Arial, sans-serif;
+    background: #fff;
+    color: #000;
+    font-size: 1rem;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+}
+
+input, button {
+    font-size: inherit;
+    outline: none;
+}
+input:focus, button:focus {
+    border: 1px solid #333;
+    outline: none;
+}
+
+button {
+    background:rgb(62, 154, 9);
+    color: #fff;
+    padding: 2px 14px;
+    border: 1px solid #000;
+    border-radius: 6px;
+}
+
+.t-table {
+    display: table;
+    height: 100%;
+    width: 100%;
+}
+
+.t-cell {
+    display:table-cell;
+    vertical-align: middle;
+}
+
+#time {
+    margin: auto;
+    position: relative;
+}
+
+@media screen and (orientation:landscape) {
+    #time{
+        width: 98vh;
+        height: 98vh;
+        top: 0.2vh;
+    }
+}
+
+@media screen and (orientation: portrait) {
+    #time {
+        width: 98vw;
+        height: 98vw;
+    }
+}
+
+#clock, #innerclock, #minute5, #minute, #hideMinute {
+    position: absolute;
+    border-radius: 50%;
+}
+
+#minute5, #clock {
+    width: var(--clock-size);
+    height: var(--clock-size);
+    margin: var(--clock-padding);
+    background: repeating-conic-gradient(from -1deg, #000 0 1deg, transparent 0deg 6deg);
+    -webkit-mask: radial-gradient(transparent 68%, #fff 0);
+}
+
+#minute5 {
+    background: repeating-conic-gradient(from -1deg, #000 0 1deg, transparent 0deg 30deg);
+}
+
+#clock {
+    top: 12px;
+    left: 12px;
+    width: calc(var(--clock-size) - 24px);
+    height: calc(var(--clock-size) - 24px);
+    margin: var(--clock-padding);
+}
+
+#innerclock {
+    top: 30px;
+    left: 30px;
+    width: calc(var(--clock-size) - 60px);
+    height: calc(var(--clock-size) - 60px);
+    margin: var(--clock-padding);
+    background: rgb(174, 10, 10);
+}
+
+#minute {
+    top: 27px;
+    left: 27px;
+    width: calc(var(--clock-size) - 54px);
+    height: calc(var(--clock-size) - 54px);
+    margin: var(--clock-padding);
+    background: rgb(174, 10, 10);
+    -webkit-mask: radial-gradient(transparent 68%, #fff 0);
+}
+
+#hideTime {
+    position: absolute;
+    width: calc(var(--clock-size) - 54px);
+    height: calc(var(--clock-size) - 54px);
+    margin: var(--clock-padding);
+    top: 27px;
+    left: 27px;
+    background: #fff;
+    border-radius: 50%;
+    transform: rotate(0deg) translate3d(0,0,0);
+    backface-visibility: hidden;
+}
+#hideMinute {
+    position: absolute;
+    top: 26.5px;
+    left: 26.5px;
+    width: calc(var(--clock-size) - 53px);
+    height: calc(var(--clock-size) - 53px);
+    margin: var(--clock-padding);
+    background: #fff;
+    -webkit-mask: radial-gradient(transparent 67%, #fff 0);
+}
+
+#restart {
+    position: absolute;
+    top: 44%;
+    left: 50%;
+    width: 30vmin;
+    margin-left: -15vmin;
+    z-index: 40;
+}
+
+.centerInfo {
+    text-align: center;
+    position: relative;
+    width: 100%;
+    padding-top: 44%;
+    z-index: 40;
+}
+
+.nr {
+    position: absolute;
+    width: 6vmin;
+    height: 4vmin;
+    margin-top: -2vmin;
+    margin-left: -3vmin;
+    text-align: center;
+    padding-top: 0;
+}
+
+.nrL {
+    margin-right: -3vmin;
+    margin-left: 0;
+}
+
+.nr55 {
+    top: 8.5%;
+    right: 23.5%;
+}
+.nr50 {
+    top: 26%;
+    right: 6%;
+}
+.nr45 {
+    top: 48.7%;
+    right: 0;
+}
+.nr40 {
+    bottom: 26%;
+    right: 6%;
+}
+.nr35 {
+    bottom: 8.5%;
+    right: 23.5%;
+    
+}
+.nr30 {
+    bottom: 3%;
+    left: 50.5%;
+}
+.nr25 {
+    bottom: 8.5%;
+    left: 23.5%;
+}
+.nr20 {
+    bottom: 26%;
+    left: 6%;
+}
+.nr15 {
+    top: 48.7%;
+    left: 0;
+}
+.nr10 {
+    top: 26%;
+    left: 6%;
+}
+.nr5 {
+    top: 8.5%;
+    left: 23.5%;
+}
+.nr0 {
+    top: 3%;
+    left: 49.8%;
+}
+
+.hidden {
+    display: none;
+}

@@ -1,0 +1,45 @@
+{
+  "name": "timerup",
+  "version": "1.0.0",
+  "description": "Visual countdown timer for kids",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder",
+    "dist:win": "electron-builder --win"
+  },
+  "author": "Tengelin",
+  "license": "ISC",
+  "build": {
+    "appId": "com.tengelin.timerup",
+    "productName": "TimerUp",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "main.js",
+      "index.html",
+      "styles/**/*",
+      "scripts/**/*",
+      "audio/**/*",
+      "icons/**/*"
+    ],
+    "win": {
+      "target": "nsis",
+      "icon": "icons/icon.ico"
+    },
+    "mac": {
+      "target": "dmg",
+      "icon": "icons/icon.icns"
+    },
+    "nsis": {
+      "oneClick": true,
+      "perMachine": false
+    },
+    "publish": null
+  },
+  "devDependencies": {
+    "electron": "^41.0.4",
+    "electron-builder": "^26.0.12"
+  }
+}
