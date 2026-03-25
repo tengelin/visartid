@@ -1,5 +1,5 @@
 {
-  "name": "timerup",
+  "name": "timer-up",
   "version": "1.0.0",
   "description": "Visual countdown timer for kids",
   "main": "main.js",
@@ -11,7 +11,7 @@
   "author": "Tengelin",
   "license": "ISC",
   "build": {
-    "appId": "com.tengelin.timerup",
+    "appId": "com.tengelin.timer-up",
     "productName": "TimerUp",
     "directories": {
       "output": "dist"

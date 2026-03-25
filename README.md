@@ -1,4 +1,4 @@
-# TimerUp
+# Timer-Up
 
 A visual countdown timer built with Electron. Features a clock-face style timer with audio alerts when time is up.
 
