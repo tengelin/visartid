@@ -19,10 +19,12 @@ npm start        # launch the app
 
 ```bash
 npm run dist       # build installer for current platform
-npm run dist:win   # build Windows installer (NSIS)
+npm run dist:mac   # build macOS installer (.dmg)
+npm run dist:win   # build Windows installer (.exe)
+npm run dist:all   # build both macOS and Windows installers
 ```
 
-Built artifacts are output to the `dist/` directory.
+Distributables are output to the `dist/` directory. The build automatically cleans previous output and removes intermediate artifacts, leaving only the installer files.
 
 ## Project Structure
 
