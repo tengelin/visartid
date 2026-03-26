@@ -22,9 +22,12 @@ TimerUp is an Electron desktop app that displays a visual countdown timer with a
 | `npm run dist:mac` | Build macOS `.dmg` |
 | `npm run dist:win` | Build Windows `.nsis` installer |
 | `npm run dist:all` | Build for macOS + Windows |
+| `npm test` | Run tests + lint (ESLint + Stylelint) |
+| `npm run lint` | Lint only (ESLint + Stylelint) |
+| `npm run lint:fix` | Auto-fix lint issues |
 | `npm run clean` | Remove `dist/` |
 
-All `dist:*` commands run `clean` first automatically.
+All `dist:*` commands run `clean` first automatically. Always run `npm test` after making changes.
 
 ## Project structure
 
@@ -33,17 +36,18 @@ main.js            — Electron main process: creates always-on-top BrowserWindo
 index.html         — Single-page renderer with clock-face markup and CSP header
 scripts/start.js   — Timer logic (IIFE): countdown via setTimeout loop at 100ms, conic-gradient CSS
 styles/main.css    — All styles; CSS custom properties for clock sizing
+tests/             — Vitest tests (CSS contrast ratio validation)
 audio/             — Alarm sound (timetimer.mp3)
 icons/             — App icons (.png, .icns, .ico)
 ```
 
 ## Code style
 
-- ES5+ in IIFEs (no modules, no `import`/`export`)
+- ES6+ in IIFEs (no modules, no `import`/`export`)
 - camelCase for JS identifiers, kebab-case for CSS classes
 - CSS custom properties for theming/sizing
-- 2-space indentation in HTML/CSS, 4-space in JS
-- No linter, no formatter configured
+- 2-space indentation everywhere
+- ESLint for JS, Stylelint for CSS (both run via `npm test`)
 
 ## Architecture notes
 

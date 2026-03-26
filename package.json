@@ -2,9 +2,14 @@
   "name": "timer-up",
   "version": "1.0.0",
   "description": "Visual countdown timer",
+  "type": "module",
   "main": "main.js",
   "scripts": {
     "start": "electron .",
+    "test": "vitest run",
+    "lint": "eslint . && stylelint 'styles/**/*.css'",
+    "lint:fix": "eslint . --fix && stylelint 'styles/**/*.css' --fix",
+    "posttest": "npm run lint",
     "clean": "rm -rf dist",
     "dist": "npm run clean && electron-builder && npm run dist:cleanup",
     "dist:win": "npm run clean && electron-builder --win && npm run dist:cleanup",
@@ -43,7 +48,15 @@
     "publish": null
   },
   "devDependencies": {
+    "@eslint/js": "^9.39.4",
+    "@stylistic/eslint-plugin": "^5.10.0",
+    "@stylistic/stylelint-config": "^3.0.1",
     "electron": "^41.0.4",
-    "electron-builder": "^26.0.12"
+    "electron-builder": "^26.0.12",
+    "eslint": "^9.39.4",
+    "globals": "^17.4.0",
+    "stylelint": "^16.26.1",
+    "stylelint-config-standard": "^39.0.1",
+    "vitest": "^4.1.2"
   }
 }
