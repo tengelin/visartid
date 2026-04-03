@@ -1,58 +1,23 @@
 {
   "name": "timer-up",
-  "version": "1.0.0",
-  "description": "Visual countdown timer",
+  "version": "2.0.0",
+  "description": "Visual countdown timer — web app & Chrome/Edge extension",
   "type": "module",
-  "main": "main.js",
   "scripts": {
-    "start": "electron .",
+    "start": "node scripts/serve.js",
     "test": "vitest run",
-    "lint": "eslint . && stylelint 'styles/**/*.css'",
-    "lint:fix": "eslint . --fix && stylelint 'styles/**/*.css' --fix",
+    "lint": "eslint . && stylelint 'styles/**/*.css' 'extension/**/*.css'",
+    "lint:fix": "eslint . --fix && stylelint 'styles/**/*.css' 'extension/**/*.css' --fix",
     "posttest": "npm run lint",
     "clean": "rm -rf dist",
-    "dist": "npm run clean && electron-builder && npm run dist:cleanup",
-    "dist:win": "npm run clean && electron-builder --win && npm run dist:cleanup",
-    "dist:mac": "npm run clean && electron-builder --mac && npm run dist:cleanup",
-    "dist:all": "npm run clean && electron-builder --mac --win && npm run dist:cleanup",
-    "dist:cleanup": "rm -rf dist/*-unpacked dist/builder-*.y*ml dist/builder-*.yaml"
+    "pack:extension": "node scripts/pack-extension.js"
   },
   "author": "Tengelin",
   "license": "ISC",
-  "build": {
-    "appId": "com.tengelin.timer-up",
-    "productName": "TimerUp",
-    "directories": {
-      "output": "dist"
-    },
-    "files": [
-      "main.js",
-      "index.html",
-      "styles/**/*",
-      "scripts/**/*",
-      "audio/**/*",
-      "icons/**/*"
-    ],
-    "win": {
-      "target": "nsis",
-      "icon": "icons/icon.ico"
-    },
-    "mac": {
-      "target": "dmg",
-      "icon": "icons/icon.icns"
-    },
-    "nsis": {
-      "oneClick": true,
-      "perMachine": false
-    },
-    "publish": null
-  },
   "devDependencies": {
     "@eslint/js": "^9.39.4",
     "@stylistic/eslint-plugin": "^5.10.0",
     "@stylistic/stylelint-config": "^3.0.1",
-    "electron": "^41.0.4",
-    "electron-builder": "^26.0.12",
     "eslint": "^9.39.4",
     "globals": "^17.4.0",
     "stylelint": "^16.26.1",

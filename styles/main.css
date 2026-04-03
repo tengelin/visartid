@@ -17,7 +17,6 @@
 }
 
 html {
-  font-size: 5vmin;
   height: 100%;
   -webkit-font-smoothing: antialiased;
 }
@@ -26,7 +25,7 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Arial, sans-serif;
   background: var(--color-white);
   color: var(--color-text);
-  font-size: 1rem;
+  font-size: 16px;
   margin: 0;
   padding: 0;
   width: 100%;
@@ -36,7 +35,6 @@ body {
 input,
 button {
   font-family: inherit;
-  font-size: inherit;
   outline: none;
 }
 
@@ -46,6 +44,7 @@ input#nrOfMinutes {
   text-align: center;
   border: 1px solid #999;
   border-radius: 4px;
+  font-size: 16px;
 }
 
 input#nrOfMinutes:focus {
@@ -56,12 +55,14 @@ input#nrOfMinutes:focus {
 button {
   background: var(--color-green);
   color: var(--color-white);
-  padding: 0.25rem 0.9rem;
+  padding: 6px 18px;
   border: 1.5px solid rgb(0 0 0 / 15%);
   border-radius: 6px;
+  font-size: 16px;
   font-weight: 600;
   cursor: pointer;
   white-space: nowrap;
+  min-width: 96px;
   transition: background-color 150ms ease, transform 100ms ease;
 }
 
@@ -124,27 +125,42 @@ button:focus:not(:focus-visible) {
 }
 
 .t-cell {
-  display: block;
+  display: flex;
+  width: 100%;
+  height: 100%;
 }
 
 #time {
-  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 100%;
   position: relative;
 }
 
-@media screen and (orientation: landscape) {
-  #time {
-    width: 98vh;
-    height: 98vh;
-    top: 0.2vh;
-  }
+#clock-face {
+  position: relative;
+  flex: 1 1 auto;
+  min-height: 0;
+  aspect-ratio: 1 / 1;
+  max-width: 100%;
+  max-height: 100%;
+  margin-top: 0.5rem;
 }
 
-@media screen and (orientation: portrait) {
-  #time {
-    width: 98vw;
-    height: 98vw;
-  }
+#controls {
+  flex: 0 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  width: 100%;
+}
+
+#controls .hidden {
+  display: none;
 }
 
 #clock,
@@ -221,38 +237,18 @@ button:focus:not(:focus-visible) {
   -webkit-mask: radial-gradient(transparent 67%, #fff 0);
 }
 
-#start,
-#stop,
-#resume,
-#reset {
-  position: absolute;
-  top: 58%;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 32vmin;
-  padding: 0.3rem 0.9rem;
-  z-index: 40;
-}
-
-#resume {
-  top: calc(58% - 2.5rem);
-}
-
 .centerInfo {
   display: flex;
   justify-content: center;
   align-items: baseline;
   gap: 0.35rem;
   text-align: center;
-  position: relative;
-  width: 100%;
-  padding-top: 44%;
-  z-index: 40;
 }
 
 .centerInfo label {
   color: var(--color-text);
   cursor: pointer;
+  font-size: 16px;
   order: 1;
 }
 
@@ -291,6 +287,45 @@ button:focus:not(:focus-visible) {
 .nr50 { top: 26.5%; left: 90.7%; }
 
 .nr55 { top: 9.3%; left: 73.5%; }
+
+#pip {
+  position: absolute;
+  top: 3%;
+  right: calc(-1 * (100vw - 100%) / 2 + 0.75rem);
+  left: auto;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  min-width: auto;
+  padding: 0;
+  font-size: 1.3rem;
+  line-height: 1;
+  background: transparent;
+  border: none;
+  color: var(--color-text);
+  z-index: 40;
+}
+
+#pip:hover {
+  background: transparent;
+  transform: translateY(-50%) scale(1.15);
+}
+
+#pip:active {
+  background: transparent;
+  transform: translateY(-50%) scale(1);
+}
+
+#pip:focus {
+  box-shadow: none;
+}
+
+#pip.pip-active {
+  right: calc(-1 * (100vw - 100%) / 2 + 0.25rem);
+}
 
 .hidden {
   opacity: 0;

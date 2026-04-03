@@ -109,4 +109,43 @@
     hideMinute.style.background = "#fff";
     nrMins.focus();
   }
+
+  // Document Picture-in-Picture support
+  const btnPip = document.getElementById("pip");
+
+  if (window.documentPictureInPicture) {
+    btnPip.classList.remove("hidden");
+
+    btnPip.addEventListener("click", async () => {
+      if (window.documentPictureInPicture.window) {
+        window.documentPictureInPicture.window.close();
+        return;
+      }
+
+      const timeEl = document.getElementById("time");
+      const pipWindow = await window.documentPictureInPicture.requestWindow({
+        width: 300,
+        height: 340,
+      });
+
+      btnPip.innerHTML = "\u2715";
+      btnPip.title = "Lossa från överst";
+      btnPip.classList.add("pip-active");
+
+      const style = document.createElement("link");
+      style.rel = "stylesheet";
+      style.href = "styles/main.css";
+      pipWindow.document.head.appendChild(style);
+
+      pipWindow.document.body.appendChild(timeEl);
+
+      pipWindow.addEventListener("pagehide", () => {
+        const container = document.querySelector(".t-cell");
+        container.appendChild(timeEl);
+        btnPip.classList.remove("pip-active");
+        btnPip.innerHTML = "\u{1F4CC}";
+        btnPip.title = "Fäst överst";
+      });
+    });
+  }
 }());
