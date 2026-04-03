@@ -1,7 +1,7 @@
 {
-  "name": "timer-up",
+  "name": "visartid",
   "version": "2.0.0",
-  "description": "Visual countdown timer with a clock-face UI",
+  "description": "VisarTid — visuell nedräkningstimer med urtavla",
   "type": "module",
   "scripts": {
     "start": "node scripts/serve.js",
