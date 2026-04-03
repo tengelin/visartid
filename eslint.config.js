@@ -48,17 +48,7 @@ export default [
     },
   },
   {
-    files: [ 'extension/**/*.js' ],
-    languageOptions: {
-      globals: {
-        ...globals.browser,
-        chrome: 'readonly',
-      },
-      sourceType: 'script',
-    },
-  },
-  {
-    files: [ 'scripts/pack-extension.js', 'scripts/serve.js' ],
+    files: [ 'scripts/serve.js' ],
     languageOptions: {
       globals: { ...globals.node },
     },

@@ -1,19 +1,17 @@
 {
   "name": "timer-up",
   "version": "2.0.0",
-  "description": "Visual countdown timer — web app & Chrome/Edge extension",
+  "description": "Visual countdown timer with a clock-face UI",
   "type": "module",
   "scripts": {
     "start": "node scripts/serve.js",
     "test": "vitest run",
-    "lint": "eslint . && stylelint 'styles/**/*.css' 'extension/**/*.css'",
-    "lint:fix": "eslint . --fix && stylelint 'styles/**/*.css' 'extension/**/*.css' --fix",
-    "posttest": "npm run lint",
-    "clean": "rm -rf dist",
-    "pack:extension": "node scripts/pack-extension.js"
+    "lint": "eslint . && stylelint 'styles/**/*.css'",
+    "lint:fix": "eslint . --fix && stylelint 'styles/**/*.css' --fix",
+    "posttest": "npm run lint"
   },
   "author": "Tengelin",
-  "license": "ISC",
+  "license": "CC-BY-NC-ND-4.0",
   "devDependencies": {
     "@eslint/js": "^9.39.4",
     "@stylistic/eslint-plugin": "^5.10.0",
