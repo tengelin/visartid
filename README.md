@@ -69,3 +69,9 @@ npm test         # run tests + lint
 npm run lint     # lint only
 npm run lint:fix # auto-fix lint issues
 ```
+
+## License
+
+© 2026 Henrik Tengelin. Licensed under [CC BY-NC-ND 4.0](https://creativecommons.org/licenses/by-nc-nd/4.0/).
+
+Users may use this app but may not reuse, modify, or commercialize the code.
