@@ -2,40 +2,40 @@
 
 ## Overview
 
-TimerUp — an Electron desktop app that displays a visual countdown timer.
+TimerUp — a visual countdown timer built as a web app + Chrome/Edge extension.
 
 ## Tech stack
 
-Electron 41, vanilla JS/HTML/CSS, electron-builder 26, Node 22+
+Vanilla JS/HTML/CSS, Chrome Extension Manifest V3, Document PiP API, Node 22+
 
 ## Commands
 
-- `npm start` — run the app
-- `npm run dist` — build for current platform (cleans first)
-- `npm run dist:mac` — build macOS .dmg
-- `npm run dist:win` — build Windows installer
-- `npm run dist:all` — build macOS + Windows
-- `npm run clean` — remove dist/
+- `npm start` — serve web app locally (port 3000)
 - `npm test` — run test suite (WCAG contrast checks) + lint (ESLint + Stylelint)
 - `npm run lint` — run ESLint + Stylelint only
 - `npm run lint:fix` — auto-fix lint issues
+- `npm run pack:extension` — build extension into dist/extension/
+- `npm run clean` — remove dist/
 
 ## Project structure
 
 ```
-main.js            — Electron main process
-index.html         — Single-page renderer with CSP meta tag
-scripts/start.js   — Timer logic (IIFE, setTimeout loop, conic-gradient)
-styles/main.css    — All styles, CSS custom properties
-tests/             — Vitest test suite (contrast ratio validation)
-audio/             — Alarm sound
-icons/             — App icons (.png, .icns, .ico)
-package.json       — Dependencies + electron-builder config under "build"
+index.html                — Timer web app with CSP meta tag
+scripts/start.js          — Timer logic (IIFE, setTimeout loop, conic-gradient, PiP)
+scripts/pack-extension.js — Build script for extension packaging
+styles/main.css           — All styles, CSS custom properties
+tests/                    — Vitest test suite (contrast ratio validation)
+audio/                    — Alarm sound
+icons/                    — App icons (.png, .icns, .ico, extension sizes)
+extension/                — Chrome/Edge extension source
+  manifest.json           — Manifest V3 config
+  background.js           — Service worker (window mgmt + re-focus)
+  popup.html/js/css       — Extension popup UI
 ```
 
 ## Code conventions
 
-- ES6+ in IIFEs — no modules, no transpilation, no bundler
+- ES6+ in IIFEs — no modules, no transpilation, no bundler (browser scripts)
 - camelCase JS, kebab-case CSS classes
 - 2-space indentation everywhere
 - CSS custom properties for clock sizing
@@ -52,9 +52,8 @@ package.json       — Dependencies + electron-builder config under "build"
 - Always run `npm test` after making changes — all tests must pass before committing
 - Also verify UI changes visually by running the app (`npm start`)
 - ESLint (JS) and Stylelint (CSS) run as posttest — `npm test` catches both test failures and lint errors
-- Always clean dist before builds (the npm scripts do this automatically)
-- electron-builder config lives in `package.json` under `"build"`
-- `publish` is `null` — no auto-publishing configured
+- Extension is built via `npm run pack:extension` — output goes to `dist/extension/`
+- To load the extension: `chrome://extensions` → Developer Mode → Load unpacked → `dist/extension/`
 
 ## Git rules
 

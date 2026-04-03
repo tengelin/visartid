@@ -41,14 +41,24 @@ export default [
     },
   },
   {
-    files: [ 'scripts/**/*.js' ],
+    files: [ 'scripts/start.js' ],
     languageOptions: {
       globals: { ...globals.browser },
       sourceType: 'script',
     },
   },
   {
-    files: [ 'main.js' ],
+    files: [ 'extension/**/*.js' ],
+    languageOptions: {
+      globals: {
+        ...globals.browser,
+        chrome: 'readonly',
+      },
+      sourceType: 'script',
+    },
+  },
+  {
+    files: [ 'scripts/pack-extension.js', 'scripts/serve.js' ],
     languageOptions: {
       globals: { ...globals.node },
     },
