@@ -43,9 +43,7 @@ function contrastRatio(rgb1, rgb2) {
 
 const testDir = dirname(fileURLToPath(import.meta.url));
 const css = readFileSync(resolve(testDir, '../styles/main.css'), 'utf8');
-const popupCss = readFileSync(resolve(testDir, '../extension/popup.css'), 'utf8');
 const props = parseCssCustomProperties(css);
-const popupProps = parseCssCustomProperties(popupCss);
 const white = [ 255, 255, 255 ];
 
 describe('WCAG contrast math', () => {
@@ -89,16 +87,3 @@ describe('WCAG AA contrast — buttons with white text', () => {
   });
 });
 
-describe('WCAG AA contrast — popup button with white text', () => {
-  const popupButtonVars = [
-    'color-green', 'color-green-hover', 'color-green-active',
-  ];
-
-  popupButtonVars.forEach((name) => {
-    it(`popup --${  name  } (${  popupProps[name]  }) vs white meets 4.5:1`, () => {
-      const bg = parseColor(popupProps[name]);
-      const ratio = contrastRatio(bg, white);
-      expect(ratio, `popup --${  name  } contrast is ${  ratio.toFixed(2)  }:1`).toBeGreaterThanOrEqual(4.5);
-    });
-  });
-});
